@@ -14,8 +14,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     @IBOutlet weak var labelAccuracy: UILabel!
     @IBOutlet weak var labelName: UILabel!
-    var state : Bool = false
-    var name : String = ""
+    var state : Bool   = false
+    var name  : String = ""
     var accur : String = ""
     
     override func viewDidLoad() {
@@ -41,9 +41,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "VideoQueue"))
         captureSession.addOutput(dataOutput)
         
-        
-        
     }
+    
     @IBAction func captureAction(_ sender: UIButton) {
         
         doHaptic()
@@ -66,9 +65,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             guard let firstObservation = results.first else { return }
             
             print(firstObservation.identifier, firstObservation.confidence)
-            
             self.settingUpVoice(voice: firstObservation.identifier)
-            
             self.name = firstObservation.identifier
             self.accur = String (firstObservation.confidence * 100)
         }
@@ -87,12 +84,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             speechSynthesizer.speak(speechUtterance)
             state = false
-            
         }
-        
     }
-    
-
 }
 
 extension UIViewController {
@@ -104,4 +97,3 @@ extension UIViewController {
         feedback.impactOccurred()
     }
 }
-

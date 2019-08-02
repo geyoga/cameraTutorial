@@ -12,7 +12,11 @@ import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    @IBOutlet weak var labelAccuracy: UILabel!
+    @IBOutlet weak var labelName: UILabel!
     var state : Bool = false
+    var name : String = ""
+    var accur : String = ""
     
     override func viewDidLoad() {
         
@@ -42,7 +46,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     @IBAction func captureAction(_ sender: UIButton) {
         
+        doHaptic()
         state = true
+        labelName.text     = "Object   : \(name)"
+        labelAccuracy.text = "Accuracy : \(accur)"
         
     }
     
@@ -62,6 +69,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             self.settingUpVoice(voice: firstObservation.identifier)
             
+            self.name = firstObservation.identifier
+            self.accur = String (firstObservation.confidence * 100)
         }
         
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
@@ -74,7 +83,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             let speechSynthesizer = AVSpeechSynthesizer()
             let speechUtterance : AVSpeechUtterance = AVSpeechUtterance(string: voice)
-            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 10.0
+            speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
             speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             speechSynthesizer.speak(speechUtterance)
             state = false
@@ -83,7 +92,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
     }
     
-    
 
+}
+
+extension UIViewController {
+    
+    func doHaptic () {
+        
+        let feedback = UIImpactFeedbackGenerator(style: .medium)
+        
+        feedback.impactOccurred()
+    }
 }
 

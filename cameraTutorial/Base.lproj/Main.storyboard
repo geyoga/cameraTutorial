@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fce-ms-cQD">
-                                <rect key="frame" x="20" y="801" width="374" height="61"/>
+                                <rect key="frame" x="20" y="768" width="374" height="61"/>
                                 <color key="backgroundColor" red="0.04975590563" green="0.27468312509999998" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="8jb-iA-Z8U"/>
-                                    <constraint firstAttribute="width" constant="374" id="PWn-EW-EEr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="374" id="PWn-EW-EEr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,18 +37,42 @@
                                     <action selector="captureAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uNB-7z-XpM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-P9-EBn">
+                                <rect key="frame" x="20" y="74" width="374" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="Ikj-K6-fgM"/>
+                                    <constraint firstAttribute="height" constant="39" id="Svk-Wm-hFz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acK-J1-X24">
+                                <rect key="frame" x="20" y="121" width="374" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qwT-P9-EBn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4mv-Bd-4sK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fce-ms-cQD" secondAttribute="trailing" constant="20" id="D23-oI-KS3"/>
                             <constraint firstItem="fce-ms-cQD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Iuk-jF-W9k"/>
-                            <constraint firstItem="fce-ms-cQD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="JXi-Is-7n1"/>
+                            <constraint firstItem="fce-ms-cQD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-33" id="JXi-Is-7n1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qwT-P9-EBn" secondAttribute="trailing" constant="20" id="P7E-Ko-qDJ"/>
                             <constraint firstItem="fce-ms-cQD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Tan-cz-DMu"/>
+                            <constraint firstItem="qwT-P9-EBn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="VTj-XC-bcW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fce-ms-cQD" secondAttribute="trailing" constant="20" id="t7R-gr-3RF"/>
-                            <constraint firstItem="fce-ms-cQD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zgz-Bx-aSR"/>
+                            <constraint firstItem="fce-ms-cQD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-33" id="zgz-Bx-aSR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="labelAccuracy" destination="acK-J1-X24" id="eL8-kv-iru"/>
+                        <outlet property="labelName" destination="qwT-P9-EBn" id="lHZ-QL-1PN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
